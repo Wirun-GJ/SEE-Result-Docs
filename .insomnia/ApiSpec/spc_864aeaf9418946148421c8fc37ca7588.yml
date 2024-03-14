@@ -1,0 +1,68 @@
+_id: spc_864aeaf9418946148421c8fc37ca7588
+type: ApiSpec
+parentId: wrk_926e02fc996c4ed7880c6d03e03cf8fa
+modified: 1710408646258
+created: 1710408581132
+fileName: New Document
+contents: |
+  openapi: 3.0.0
+  info:
+    title: My API
+    description: Description of my API
+    version: 1.0.0
+  servers:
+    - url: https://api.example.com/v1
+  paths:
+    /users:
+      get:
+        summary: Get all users
+        responses:
+          '200':
+            description: A list of users
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+      post:
+        summary: Create a new user
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+        responses:
+          '201':
+            description: User created successfully
+    /users/{id}:
+      get:
+        summary: Get user by ID
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: A single user
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+contentType: yaml
